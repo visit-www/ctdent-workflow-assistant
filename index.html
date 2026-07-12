@@ -113,7 +113,7 @@
   </header>
 
   <section class="hero" id="download">
-    <div class="pill">Windows desktop companion · <b>v2.1.1</b></div>
+    <div class="pill">Windows desktop companion · <b>v2.1.3</b></div>
     <h1>Your case list, as a <span>live one-click worklist</span></h1>
     <p class="sub">CT Dent Assistant runs alongside the CT Dent reporting portal. For any case it
       signs you in, downloads the scan in your preferred format, and launches the viewer you chose —
@@ -148,9 +148,10 @@
   </section>
 
   <section class="whatsnew">
-    <h2>What's new <span class="tag">v2.1.1</span></h2>
+    <h2>What's new <span class="tag">v2.1.3</span></h2>
     <ul>
-      <li><b>It stays signed in.</b> Earlier builds asked for a one-time code on every launch. Your session is now restored properly, so relaunching simply reconnects.</li>
+      <li><b>Sign-in works.</b> The portal's picture check will not accept a page that an app is touching — so the app was breaking your own login. It now keeps its hands off the page entirely while you sign in, and picks up the session once you reach your worklist.</li>
+      <li><b>No password box.</b> The app never asks for, types or stores your portal login. You sign in yourself the first time; after that it remembers the session, and later launches open your worklist with no sign-in at all.</li>
       <li><b>You choose your DICOM viewer.</b> The app finds the viewers installed on your PC and asks which to use — RadiAnt, Carestream, anything. No hardcoded path, and if a viewer is later moved or removed it tells you and offers to re-pick it.</li>
       <li><b>Nothing lands in a folder you didn't pick.</b> On first run you choose where scans are stored. There is no default location.</li>
     </ul>
@@ -184,7 +185,7 @@
       <li><b>Run the installer.</b> It installs for your user only, so there is no admin prompt.</li>
       <li><b>Choose where scans are stored.</b> Pick a secure, access-controlled folder. Nothing downloads until you do.</li>
       <li><b>Pick your browser and preferred format.</b> Choosing DICOM asks which installed viewer to open scans with; Volume Viewer downloads bring their own.</li>
-      <li><b>Save your portal credentials</b>, click <b>Start Session</b>, and complete the one-time code. You should only need to do that once.</li>
+      <li><b>Click Start Session and sign in yourself</b>, in the browser window that opens — password, picture check and one-time code. The app deliberately stays off the page while you do. You should only need to do that once: it remembers the session, and later launches open your worklist straight away.</li>
     </ol>
   </section>
 
