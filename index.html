@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CT Dent Assistant â€” Clinical Workflow Suite</title>
+<meta name="description" content="A Windows desktop companion for the CT Dent reporting portal: a live, one-click worklist that signs you in, downloads each scan, and launches the right viewer." />
+<!-- NOTE: set the download link once the public releases repo exists. -->
+<style>
+  :root{
+    --bg:#0f1418; --surface:#161d23; --surface2:#1f2830; --sep:#2b353d;
+    --text:#ffffff; --muted:#9aa6b1; --accent:#0a84ff; --accent2:#0071e3;
+    --green:#30d158; --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:radial-gradient(1200px 600px at 50% -10%,#18232c 0%,var(--bg) 55%);
+       color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  header{padding:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px}
+  .brand .dot{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#1a6b47,#0a84ff);
+       display:grid;place-items:center;font-size:18px}
+  nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px}
+  nav a:hover{color:var(--text)}
+
+  .hero{padding:56px 0 40px;text-align:center}
+  .pill{display:inline-block;padding:6px 14px;border:1px solid var(--sep);border-radius:999px;
+       color:var(--muted);font-size:13px;margin-bottom:22px}
+  h1{font-size:clamp(32px,6vw,54px);line-height:1.1;letter-spacing:-.02em;margin-bottom:18px}
+  h1 span{background:linear-gradient(90deg,#5ac8fa,#0a84ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:clamp(16px,2.5vw,20px);color:var(--muted);max-width:680px;margin:0 auto 34px}
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;
+       text-decoration:none;font-weight:700;font-size:17px;padding:15px 28px;border-radius:12px;
+       transition:transform .12s ease,background .2s ease;box-shadow:0 10px 30px rgba(10,132,255,.35)}
+  .cta:hover{background:var(--accent2);transform:translateY(-1px)}
+  .meta{margin-top:14px;color:var(--muted);font-size:13px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:56px 0}
+  .card{background:var(--surface);border:1px solid var(--sep);border-radius:var(--radius);padding:22px}
+  .card h3{font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+  .card p{color:var(--muted);font-size:14px}
+  .ico{width:30px;height:30px;border-radius:8px;background:var(--surface2);display:grid;place-items:center;font-size:15px}
+
+  .req{background:var(--surface);border:1px solid var(--sep);border-radius:var(--radius);padding:26px;margin:20px 0 48px}
+  .req h2{font-size:20px;margin-bottom:14px}
+  .req ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+  .req li{color:var(--muted);font-size:14px;padding-left:22px;position:relative}
+  .req li::before{content:"âœ“";color:var(--green);position:absolute;left:0;font-weight:700}
+
+  .apps{margin:40px 0}
+  .apps h2{font-size:20px;margin-bottom:6px}
+  .apps .lead{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .appgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .appcard{background:var(--surface);border:1px solid var(--sep);border-radius:var(--radius);padding:20px;text-decoration:none;color:inherit;transition:border-color .2s}
+  .appcard:hover{border-color:var(--accent)}
+  .appcard h4{font-size:15px;margin-bottom:4px}
+  .appcard p{color:var(--muted);font-size:13px}
+
+  footer{border-top:1px solid var(--sep);margin-top:40px;padding:28px 0 48px;color:var(--muted);font-size:13px;text-align:center}
+  .note{font-size:12px;color:var(--muted);max-width:720px;margin:26px auto 0;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="dot">ðŸ¦·</span> CT Dent Assistant</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#download">Download</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="download">
+    <div class="pill">Windows desktop companion Â· v2.0.0</div>
+    <h1>Your case list, as a <span>live one-click worklist</span></h1>
+    <p class="sub">CT Dent Assistant runs alongside the CT Dent reporting portal. For any case it
+      signs you in, downloads the scan in your preferred format, and launches the correct viewer
+      automatically â€” while logging every case opened for easy monthly reporting.</p>
+    <!-- Replace https://github.com/visit-www/ctdent-workflow-assistant/releases/latest/download/CT_Dent_Setup.exe after the public releases repo is created. -->
+    <a class="cta" id="downloadBtn" href="https://github.com/visit-www/ctdent-workflow-assistant/releases/latest/download/CT_Dent_Setup.exe">â¬‡  Download for Windows</a>
+    <div class="meta">Windows 10 / 11 Â· ~57 MB Â· no separate browser download needed</div>
+  </section>
+
+  <section class="grid" id="features">
+    <div class="card"><h3><span class="ico">ðŸ“‹</span> Live worklist</h3><p>Pulls your current cases and shows their status with colour-coded chips.</p></div>
+    <div class="card"><h3><span class="ico">ðŸ–±ï¸</span> One-click open</h3><p>Downloads the scan and launches the right viewer â€” Carestream DICOM or One Volume Viewer.</p></div>
+    <div class="card"><h3><span class="ico">ðŸ§©</span> Multi-study aware</h3><p>Opens and bills each study of a patient separately, labelled by its clinical summary.</p></div>
+    <div class="card"><h3><span class="ico">ðŸ’·</span> Monthly billing</h3><p>Logs every opened case and exports a per-month report in one click.</p></div>
+    <div class="card"><h3><span class="ico">ðŸ“Œ</span> Side strip &amp; pin</h3><p>Dock the app as a slim always-on-top strip; make it solid or see-through.</p></div>
+    <div class="card"><h3><span class="ico">ðŸ”</span> Private by design</h3><p>All data stays on your PC. Nothing is uploaded anywhere.</p></div>
+  </section>
+
+  <section class="req" id="requirements">
+    <h2>Requirements</h2>
+    <ul>
+      <li>Windows 10 or 11 (64-bit)</li>
+      <li>Microsoft Edge, Google Chrome, or Brave</li>
+      <li>A CT Dent portal account</li>
+      <li>Your scan viewer (Carestream / One Volume Viewer)</li>
+    </ul>
+  </section>
+
+  <section class="apps">
+    <h2>More apps by the same developer</h2>
+    <p class="lead">CT Dent Assistant is built by Dr. Gaurav S Gupta (Eralight Limited). Do check these out:</p>
+    <div class="appgrid">
+      <a class="appcard" href="https://leela-sr.vercel.app/" target="_blank" rel="noopener"><h4>ðŸ§¬ Leela-SR</h4><p>Evidence Synthesis Platform</p></a>
+      <a class="appcard" href="https://moonshot-app.vercel.app/" target="_blank" rel="noopener"><h4>ðŸš€ Moonshot</h4><p>AI Presentations &amp; Papers</p></a>
+      <a class="appcard" href="https://www.radinsights.xyz" target="_blank" rel="noopener"><h4>ðŸŒ€ RadInsights</h4><p>Your Radiology Companion</p></a>
+    </div>
+  </section>
+
+  <p class="note">CT Dent Assistant is proprietary software. It handles patient data and login
+    tokens locally on your machine â€” keep it on a secure, access-controlled drive and use it in
+    line with UK GDPR and your CT Dent agreement.</p>
+
+  <footer>
+    Developed by <strong>Dr. Gaurav S Gupta</strong> Â· Eralight Limited Â·
+    <a href="mailto:contact@radinsights.xyz" style="color:var(--accent)">contact@radinsights.xyz</a><br>
+    Â© Eralight Limited. All rights reserved.
+  </footer>
+</div>
+</body>
+</html>
+
