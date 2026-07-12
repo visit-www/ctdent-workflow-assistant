@@ -1,16 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CT Dent Assistant â€” Clinical Workflow Suite</title>
-<meta name="description" content="A Windows desktop companion for the CT Dent reporting portal: a live, one-click worklist that signs you in, downloads each scan, and launches the right viewer." />
-<!-- NOTE: set the download link once the public releases repo exists. -->
+<title>CT Dent Assistant — Download for Windows</title>
+<meta name="description" content="A Windows desktop companion for the CT Dent reporting portal: a live, one-click worklist that signs you in, downloads each scan, and launches the viewer you choose." />
 <style>
   :root{
     --bg:#0f1418; --surface:#161d23; --surface2:#1f2830; --sep:#2b353d;
     --text:#ffffff; --muted:#9aa6b1; --accent:#0a84ff; --accent2:#0071e3;
-    --green:#30d158; --radius:16px;
+    --green:#30d158; --amber:#ff9f0a; --radius:16px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -24,29 +23,69 @@
   nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px}
   nav a:hover{color:var(--text)}
 
-  .hero{padding:56px 0 40px;text-align:center}
+  .hero{padding:56px 0 8px;text-align:center}
   .pill{display:inline-block;padding:6px 14px;border:1px solid var(--sep);border-radius:999px;
        color:var(--muted);font-size:13px;margin-bottom:22px}
+  .pill b{color:var(--green);font-weight:600}
   h1{font-size:clamp(32px,6vw,54px);line-height:1.1;letter-spacing:-.02em;margin-bottom:18px}
   h1 span{background:linear-gradient(90deg,#5ac8fa,#0a84ff);-webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{font-size:clamp(16px,2.5vw,20px);color:var(--muted);max-width:680px;margin:0 auto 34px}
-  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;
-       text-decoration:none;font-weight:700;font-size:17px;padding:15px 28px;border-radius:12px;
+
+  /* Download card - the point of the page. */
+  .dl{background:var(--surface);border:1px solid var(--sep);border-radius:20px;
+      padding:30px 28px 26px;max-width:560px;margin:0 auto;
+      box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#fff;
+       text-decoration:none;font-weight:700;font-size:17px;padding:16px 30px;border-radius:12px;width:100%;
        transition:transform .12s ease,background .2s ease;box-shadow:0 10px 30px rgba(10,132,255,.35)}
   .cta:hover{background:var(--accent2);transform:translateY(-1px)}
-  .meta{margin-top:14px;color:var(--muted);font-size:13px}
+  .filemeta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:16px;
+       color:var(--muted);font-size:13px}
+  .filemeta span{display:inline-flex;align-items:center;gap:6px}
+  .filemeta code{background:var(--surface2);border:1px solid var(--sep);border-radius:6px;
+       padding:1px 7px;font-size:12.5px;color:var(--text)}
+  .after{margin-top:20px;padding-top:18px;border-top:1px solid var(--sep);text-align:left}
+  .after h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+  .after li{list-style:none;color:var(--muted);font-size:14px;padding-left:24px;position:relative;margin-top:8px}
+  .after li::before{content:"✓";color:var(--green);position:absolute;left:0;font-weight:700}
+  .after li b{color:var(--text);font-weight:600}
+  .smartscreen{margin-top:18px;border-left:3px solid var(--amber);background:var(--surface2);
+       border-radius:10px;padding:13px 15px;color:var(--muted);font-size:13.5px;text-align:left}
+  .smartscreen b{color:var(--amber)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:56px 0}
+  .whatsnew{background:var(--surface);border:1px solid var(--sep);border-left:3px solid var(--green);
+       border-radius:var(--radius);padding:22px 24px;margin:56px 0 0;text-align:left}
+  .whatsnew h2{font-size:16px;margin-bottom:10px}
+  .whatsnew h2 .tag{background:rgba(48,209,88,.14);color:var(--green);font-size:12px;font-weight:700;
+       padding:2px 9px;border-radius:999px;margin-left:8px;vertical-align:middle}
+  .whatsnew li{color:var(--muted);font-size:14px;list-style:none;padding-left:22px;position:relative;margin-top:7px}
+  .whatsnew li::before{content:"→";color:var(--green);position:absolute;left:0;font-weight:700}
+  .whatsnew li b{color:var(--text);font-weight:600}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:48px 0}
   .card{background:var(--surface);border:1px solid var(--sep);border-radius:var(--radius);padding:22px}
   .card h3{font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
   .card p{color:var(--muted);font-size:14px}
   .ico{width:30px;height:30px;border-radius:8px;background:var(--surface2);display:grid;place-items:center;font-size:15px}
 
   .req{background:var(--surface);border:1px solid var(--sep);border-radius:var(--radius);padding:26px;margin:20px 0 48px}
-  .req h2{font-size:20px;margin-bottom:14px}
-  .req ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+  .req h2{font-size:20px;margin-bottom:6px}
+  .req .lead{color:var(--muted);font-size:14px;margin-bottom:16px}
+  .req ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
   .req li{color:var(--muted);font-size:14px;padding-left:22px;position:relative}
-  .req li::before{content:"âœ“";color:var(--green);position:absolute;left:0;font-weight:700}
+  .req li::before{content:"✓";color:var(--green);position:absolute;left:0;font-weight:700}
+  .req li b{color:var(--text);font-weight:600}
+
+  .steps{margin:48px 0}
+  .steps h2{font-size:20px;margin-bottom:6px}
+  .steps .lead{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .steps ol{list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;position:relative;padding:14px 0 14px 46px;border-bottom:1px solid var(--sep);
+       color:var(--muted);font-size:14px}
+  .steps li:last-child{border-bottom:0}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:13px;width:28px;height:28px;border-radius:8px;
+       background:var(--surface2);color:var(--text);display:grid;place-items:center;font-size:13px;font-weight:700}
+  .steps li b{color:var(--text);font-weight:600}
 
   .apps{margin:40px 0}
   .apps h2{font-size:20px;margin-bottom:6px}
@@ -64,65 +103,110 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="brand"><span class="dot">ðŸ¦·</span> CT Dent Assistant</div>
+    <div class="brand"><span class="dot">🦷</span> CT Dent Assistant</div>
     <nav>
       <a href="#features">Features</a>
       <a href="#requirements">Requirements</a>
+      <a href="#setup">Setup</a>
       <a href="#download">Download</a>
     </nav>
   </header>
 
   <section class="hero" id="download">
-    <div class="pill">Windows desktop companion Â· v2.1.1</div>
+    <div class="pill">Windows desktop companion · <b>v2.1.1</b></div>
     <h1>Your case list, as a <span>live one-click worklist</span></h1>
     <p class="sub">CT Dent Assistant runs alongside the CT Dent reporting portal. For any case it
-      signs you in, downloads the scan in your preferred format, and launches the correct viewer
-      automatically â€” while logging every case opened for easy monthly reporting.</p>
-    <!-- Version-agnostic: always the newest release. Every release MUST keep the
-         asset filename CT_Dent_Setup.exe or this link 404s. -->
-    <a class="cta" id="downloadBtn" href="https://github.com/visit-www/ctdent-workflow-assistant/releases/latest/download/CT_Dent_Setup.exe">â¬‡  Download for Windows</a>
-    <div class="meta">Windows 10 / 11 Â· ~60 MB Â· no separate browser download needed</div>
+      signs you in, downloads the scan in your preferred format, and launches the viewer you chose —
+      while logging every case opened for easy monthly reporting.</p>
+
+    <div class="dl">
+      <!-- Version-agnostic: always the newest release. Every release MUST keep the
+           asset filename CT_Dent_Setup.exe or this link 404s. -->
+      <a class="cta" id="downloadBtn" href="https://github.com/visit-www/ctdent-workflow-assistant/releases/latest/download/CT_Dent_Setup.exe">
+        ⬇ Download for Windows
+      </a>
+      <div class="filemeta">
+        <span><code>CT_Dent_Setup.exe</code></span>
+        <span>~60 MB</span>
+        <span>Windows 10 / 11 · 64-bit</span>
+      </div>
+
+      <div class="after">
+        <h3>What to expect</h3>
+        <ul>
+          <li><b>No admin rights needed.</b> It installs just for you — no UAC prompt.</li>
+          <li><b>No browser to install.</b> It uses the Edge, Chrome or Brave you already have.</li>
+          <li><b>Setup takes about two minutes</b>, once. After that it reconnects on its own.</li>
+        </ul>
+      </div>
+
+      <p class="smartscreen">
+        <b>Windows will warn you that the installer is unsigned.</b> That is expected — choose
+        <b>More info → Run anyway</b>. A code-signing certificate is on the roadmap.
+      </p>
+    </div>
+  </section>
+
+  <section class="whatsnew">
+    <h2>What's new <span class="tag">v2.1.1</span></h2>
+    <ul>
+      <li><b>It stays signed in.</b> Earlier builds asked for a one-time code on every launch. Your session is now restored properly, so relaunching simply reconnects.</li>
+      <li><b>You choose your DICOM viewer.</b> The app finds the viewers installed on your PC and asks which to use — RadiAnt, Carestream, anything. No hardcoded path, and if a viewer is later moved or removed it tells you and offers to re-pick it.</li>
+      <li><b>Nothing lands in a folder you didn't pick.</b> On first run you choose where scans are stored. There is no default location.</li>
+    </ul>
   </section>
 
   <section class="grid" id="features">
-    <div class="card"><h3><span class="ico">ðŸ“‹</span> Live worklist</h3><p>Pulls your current cases and shows their status with colour-coded chips.</p></div>
-    <div class="card"><h3><span class="ico">ðŸ–±ï¸</span> One-click open</h3><p>Downloads the scan and launches the right viewer â€” Carestream DICOM or One Volume Viewer.</p></div>
-    <div class="card"><h3><span class="ico">ðŸ§©</span> Multi-study aware</h3><p>Opens and bills each study of a patient separately, labelled by its clinical summary.</p></div>
-    <div class="card"><h3><span class="ico">ðŸ’·</span> Monthly billing</h3><p>Logs every opened case and exports a per-month report in one click.</p></div>
-    <div class="card"><h3><span class="ico">ðŸ“Œ</span> Side strip &amp; pin</h3><p>Dock the app as a slim always-on-top strip; make it solid or see-through.</p></div>
-    <div class="card"><h3><span class="ico">ðŸ”</span> Private by design</h3><p>All data stays on your PC. Nothing is uploaded anywhere.</p></div>
+    <div class="card"><h3><span class="ico">📋</span> Live worklist</h3><p>Pulls your current cases and shows their status with colour-coded chips.</p></div>
+    <div class="card"><h3><span class="ico">🖱️</span> One-click open</h3><p>Downloads the scan and launches the viewer you picked — your own DICOM viewer, or the package's Volume Viewer.</p></div>
+    <div class="card"><h3><span class="ico">🧩</span> Multi-study aware</h3><p>Opens and bills each study of a patient separately, labelled by its clinical summary.</p></div>
+    <div class="card"><h3><span class="ico">💷</span> Monthly billing</h3><p>Logs every opened case and exports a per-month report in one click.</p></div>
+    <div class="card"><h3><span class="ico">📌</span> Side strip &amp; pin</h3><p>Dock the app as a slim always-on-top strip; make it solid or see-through.</p></div>
+    <div class="card"><h3><span class="ico">🔒</span> Private by design</h3><p>All data stays on your PC. Nothing is uploaded anywhere.</p></div>
   </section>
 
   <section class="req" id="requirements">
     <h2>Requirements</h2>
+    <p class="lead">The app bundles neither a browser nor a viewer — it drives the ones you already have.</p>
     <ul>
-      <li>Windows 10 or 11 (64-bit)</li>
-      <li>Microsoft Edge, Google Chrome, or Brave</li>
-      <li>A CT Dent portal account</li>
-      <li>Your scan viewer (Carestream / One Volume Viewer)</li>
+      <li><b>Windows 10 or 11</b> (64-bit)</li>
+      <li><b>Microsoft Edge, Google Chrome, or Brave</b></li>
+      <li><b>A CT Dent portal account</b>, and access to wherever your one-time code arrives</li>
+      <li><b>A DICOM viewer</b> — whichever you prefer, if you work in DICOM</li>
+      <li><b>A secure folder</b> for downloaded scans — they are patient records</li>
     </ul>
+  </section>
+
+  <section class="steps" id="setup">
+    <h2>Setting up</h2>
+    <p class="lead">Once, and you are done.</p>
+    <ol>
+      <li><b>Run the installer.</b> It installs for your user only, so there is no admin prompt.</li>
+      <li><b>Choose where scans are stored.</b> Pick a secure, access-controlled folder. Nothing downloads until you do.</li>
+      <li><b>Pick your browser and preferred format.</b> Choosing DICOM asks which installed viewer to open scans with; Volume Viewer downloads bring their own.</li>
+      <li><b>Save your portal credentials</b>, click <b>Start Session</b>, and complete the one-time code. You should only need to do that once.</li>
+    </ol>
   </section>
 
   <section class="apps">
     <h2>More apps by the same developer</h2>
     <p class="lead">CT Dent Assistant is built by Dr. Gaurav S Gupta (Eralight Limited). Do check these out:</p>
     <div class="appgrid">
-      <a class="appcard" href="https://leela-sr.vercel.app/" target="_blank" rel="noopener"><h4>ðŸ§¬ Leela-SR</h4><p>Evidence Synthesis Platform</p></a>
-      <a class="appcard" href="https://moonshot-app.vercel.app/" target="_blank" rel="noopener"><h4>ðŸš€ Moonshot</h4><p>AI Presentations &amp; Papers</p></a>
-      <a class="appcard" href="https://www.radinsights.xyz" target="_blank" rel="noopener"><h4>ðŸŒ€ RadInsights</h4><p>Your Radiology Companion</p></a>
+      <a class="appcard" href="https://leela-sr.vercel.app/" target="_blank" rel="noopener"><h4>🧬 Leela-SR</h4><p>Evidence Synthesis Platform</p></a>
+      <a class="appcard" href="https://moonshot-app.vercel.app/" target="_blank" rel="noopener"><h4>🚀 Moonshot</h4><p>AI Presentations &amp; Papers</p></a>
+      <a class="appcard" href="https://www.radinsights.xyz" target="_blank" rel="noopener"><h4>🌀 RadInsights</h4><p>Your Radiology Companion</p></a>
     </div>
   </section>
 
   <p class="note">CT Dent Assistant is proprietary software. It handles patient data and login
-    tokens locally on your machine â€” keep it on a secure, access-controlled drive and use it in
+    tokens locally on your machine — keep it on a secure, access-controlled drive and use it in
     line with UK GDPR and your CT Dent agreement.</p>
 
   <footer>
-    Developed by <strong>Dr. Gaurav S Gupta</strong> Â· Eralight Limited Â·
+    Developed by <strong>Dr. Gaurav S Gupta</strong> · Eralight Limited ·
     <a href="mailto:contact@radinsights.xyz" style="color:var(--accent)">contact@radinsights.xyz</a><br>
-    Â© Eralight Limited. All rights reserved.
+    © Eralight Limited. All rights reserved.
   </footer>
 </div>
 </body>
 </html>
-
