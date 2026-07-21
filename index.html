@@ -181,7 +181,7 @@
 
   <section class="hero" id="download">
     <img class="heroicon" src="assets/ctdent-icon.png" alt="CT Dent Assistant" width="88" height="88">
-    <div class="pill">Windows app for CT Dent reporters · <b>v2.3.2</b></div>
+    <div class="pill">Windows app for CT Dent reporters · <b>v2.3.3</b></div>
     <h1>Your cases, ready to <span>open in one click</span></h1>
     <p class="sub">CT Dent Assistant sits next to the CT Dent portal and shows your case list.
       Click a case: it downloads the scan and opens it in your own viewer. It also keeps a note of
@@ -338,11 +338,25 @@
   </section>
 
   <section class="whatsnew">
-    <h2>What's new <span class="tag">v2.3.2</span></h2>
+    <h2>What's new <span class="tag">v2.3.3</span></h2>
     <ul>
-      <li><b>New in 2.3.2.</b> Opening a case now also opens that patient on the portal, in a new
-        browser tab, ready to report — so the scan is in your viewer and the report page is in front
-        of you, without hunting for the patient again.</li>
+      <li><b>Fixed in 2.3.3 — your worklist shows all of it.</b> On a worklist long enough to run to
+        a second page, the app could read just one page and report that as your whole list, and a
+        case you could see on screen might refuse to open. It now checks the portal's own case count
+        and tells you plainly if it ever comes up short.</li>
+      <li><b>New in 2.3.3 — reporting in one tab.</b> Opening a case takes you straight to that
+        patient's report page in the tab you are already in, instead of leaving a new tab behind
+        every time. When you have finished, <b>Done reporting</b> brings you back to the worklist and
+        refreshes just that patient, without re-reading the whole list.</li>
+      <li><b>Your scans are found again when the drive letter changes.</b> An encrypted USB drive
+        does not always come back as the same letter. The app now recognises your downloaded scans
+        wherever the drive has landed, so it stops offering to fetch cases you already have.</li>
+      <li><b>The month report is a spreadsheet too.</b> Alongside the CSV you get an <b>.xlsx</b>
+        with the columns already sized and the long history text wrapped, so it opens ready to read
+        instead of needing an hour of dragging column edges.</li>
+      <li><b>New in 2.3.2.</b> Opening a case now also opens that patient on the portal, ready to
+        report — so the scan is in your viewer and the report page is in front of you, without
+        hunting for the patient again.</li>
       <li><b>Fixed in 2.3.1.</b> Opening a case now tells you what it is doing while it does it, and
         a case already on your drive opens at once instead of queueing behind a batch download. The
         row updates the moment a download finishes, without a redraw. Batch downloads no longer
