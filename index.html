@@ -181,7 +181,7 @@
 
   <section class="hero" id="download">
     <img class="heroicon" src="assets/ctdent-icon.png" alt="CT Dent Assistant" width="88" height="88">
-    <div class="pill">Windows app for CT Dent reporters · <b>v2.3.3</b></div>
+    <div class="pill">Windows app for CT Dent reporters · <b>v2.3.6</b></div>
     <h1>Your cases, ready to <span>open in one click</span></h1>
     <p class="sub">CT Dent Assistant sits next to the CT Dent portal and shows your case list.
       Click a case: it downloads the scan and opens it in your own viewer. It also keeps a note of
@@ -338,8 +338,33 @@
   </section>
 
   <section class="whatsnew">
-    <h2>What's new <span class="tag">v2.3.3</span></h2>
+    <h2>What's new <span class="tag">v2.3.6</span></h2>
     <ul>
+      <li><b>Fixed in 2.3.6 — a case is never counted twice.</b> When the portal updated a row —
+        a case being signed off, or a patient's title appearing — the app could stop recognising
+        it as the same case. Scans you had already downloaded looked missing, fees you had already
+        set went blank, and a patient could end up on your invoice <b>twice</b>. Cases are now
+        matched on their Report Req ID, which does not change, and any duplicates already recorded
+        are merged the first time you open this version. <b>Check any invoice you issued recently.</b></li>
+      <li><b>Fixed in 2.3.6 — a case can never open another patient's scan.</b> A rare consequence
+        of the same problem: one patient's row could end up pointing at a scan belonging to someone
+        else. The app now refuses that link and fetches the correct scan instead.</li>
+      <li><b>New in 2.3.6 — an encrypted backup, kept off your scan drive.</b> Your case log, fees
+        and invoice record are about 125 KB and cannot be downloaded again from the portal. The app
+        now writes them, encrypted with a passphrase you choose, to a folder you pick — OneDrive, a
+        second drive, anywhere — every time it closes. If the drive is lost or the computer dies,
+        <b>Restore</b> brings everything back. Only your passphrase opens it: keep it somewhere
+        safe, because nobody can recover it for you.</li>
+      <li><b>Your case log survives a power cut.</b> Saving the log used to empty the file before
+        writing the new one, so losing power at the wrong moment could leave it blank. It is now
+        written safely, keeps a spare copy, and will never overwrite a file it could not read.</li>
+      <li><b>Moving your storage folder no longer looks like losing everything.</b> Choose a new
+        folder and the app offers to bring your scans, case log and invoices across.</li>
+      <li><b>Invoices take other items.</b> Add an expense or a credit — an encrypted drive you are
+        recharging, say — as its own line. Months now read as <b>July 2026</b> rather than 2026-07.</li>
+      <li><b>The appraisal log no longer names the referring clinician.</b> Referral notes are
+        signed, and those names were reaching a document meant to be shared. They are now removed
+        along with the patient's.</li>
       <li><b>Fixed in 2.3.3 — your worklist shows all of it.</b> On a worklist long enough to run to
         a second page, the app could read just one page and report that as your whole list, and a
         case you could see on screen might refuse to open. It now checks the portal's own case count
