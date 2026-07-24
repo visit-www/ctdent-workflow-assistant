@@ -181,7 +181,7 @@
 
   <section class="hero" id="download">
     <img class="heroicon" src="assets/ctdent-icon.png" alt="CT Dent Assistant" width="88" height="88">
-    <div class="pill">Windows app for CT Dent reporters · <b>v2.3.8</b></div>
+    <div class="pill">Windows app for CT Dent reporters · <b>v2.4.23</b></div>
     <h1>Your cases, ready to <span>open in one click</span></h1>
     <p class="sub">CT Dent Assistant sits next to the CT Dent portal and shows your case list.
       Click a case: it downloads the scan and opens it in your own viewer. It also keeps a note of
@@ -338,8 +338,27 @@
   </section>
 
   <section class="whatsnew">
-    <h2>What's new <span class="tag">v2.3.8</span></h2>
+    <h2>What's new <span class="tag">v2.4.23</span></h2>
     <ul>
+      <li><b>New in 2.4 — choose the format per case.</b> The single "Preferred Format" setting is
+        gone. Every row now has a <b>DICOM</b> and a <b>Volume Viewer</b> button — green when that
+        version is on your drive (opens instantly), blue when the portal offers it, greyed when
+        that patient has no such version. Both versions of one case can sit side by side, and
+        combined portal packages open correctly whichever button you press.</li>
+      <li><b>New in 2.4 — only one patient on screen, ever.</b> Opening a case now closes every
+        previous viewer window, whatever it is called and however it was started — the way a
+        report ends up written against the wrong patient is gone.</li>
+      <li><b>New in 2.4 — you can always see which case you are reporting.</b> Its row is
+        highlighted and marked, and the list scrolls back to it after the scan opens. The side
+        strip carries the whole loop now — open, Done reporting, set the fee — with an optional
+        fully see-through background so it floats over your viewer.</li>
+      <li><b>New in 2.4 — a tidier window.</b> Setup folds away once you are signed in (the ⚙
+        Setup button brings it back), permanent Start/Close session controls live in the header,
+        the app opens sized to your screen, and batch download counts each format honestly —
+        including cases that simply have no version in the format you asked for.</li>
+      <li><b>Fixed in 2.4 — an unplugged drive can no longer blank your records.</b> If your
+        encrypted drive disconnects mid-session, the app now refuses to trust — or save — what it
+        could not read, and everything returns by itself the moment the drive is back.</li>
       <li><b>New in 2.3.8 — the worklist loads itself.</b> Signing in used to leave the list empty
         until you pressed Sync. Now it appears on its own the moment your session is active — one
         fewer click, every time.</li>
